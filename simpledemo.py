@@ -1,7 +1,10 @@
 # Demo script
-# Just using this to master Curses
+# Just using this to master/test my libraries
 
-import curses
+import trashtxtmode as ttm
 
-stdscr = curses.initscr()
-curses.
+ttm.columns = 80
+ttm.rows = 25
+
+ttm.cls()
+ttm.title("Simple Demo")
