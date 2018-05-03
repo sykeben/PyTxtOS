@@ -139,6 +139,8 @@ def hline(thickness):
         print("#"*columns)
     else:
         return Exception
+    if 0 <= thickness <= 4:
+        forceupdate()
 
 
 def title(txt):
@@ -161,4 +163,22 @@ def forceupdate():
 
 def clearcurrentline():
     sys.stdout.write("\r")
+    forceupdate()
+
+
+def printprog(percent):
+    chars = int(round(((columns-7)*(percent/100))))
+    antichars = (columns-7)-chars
+    print("[", end='')
+    print("#"*chars, end='')
+    print(" "*antichars, end='')
+    print("]", end='')
+    if percent <= 9:
+        print("   {0}%".format(str(percent)), end='')
+    elif percent <= 99:
+        print("  {0}%".format(str(percent)), end='')
+    elif percent == 100:
+        print(" {0}%".format(str(percent)), end='')
+    else:
+        print(" ovr%", end='')
     forceupdate()
